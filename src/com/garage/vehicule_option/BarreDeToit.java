@@ -9,10 +9,14 @@ public class BarreDeToit implements Option, Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	public double prix() {
+		return 29.9;
+	}
+	
 	@Override
-	public double getPrix() {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "Barre de toit " + this.prix() + "€";
 	}
 
 }

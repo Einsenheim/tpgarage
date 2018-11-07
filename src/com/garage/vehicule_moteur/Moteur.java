@@ -9,26 +9,26 @@ public abstract class Moteur implements Serializable {
 	private static final long serialVersionUID = 1L;
 	// Declarations of variables
 	//**********************************************************************************************
-	protected TypeMoteur type;
-	protected String cylindre;
+	private TypeMoteur type;
+	private String cylindre;
 	protected double prix;
 	//**********************************************************************************************
 	
 	//Default constructor
 	//**********************************************************************************************
 	public Moteur() {
-		type = null;
-		cylindre = "";
-		prix = 0;
+		this.type = null;
+		this.cylindre = "Inconnu";
+		this.prix = 0.0d;
 	
 	}
 	//**********************************************************************************************
 	//constructor with parameter
 	
 	//**********************************************************************************************
-		public Moteur(String pcylindre, double pprix) {
+		public Moteur(String pcylindre, double pPrix) {
 			cylindre = pcylindre;
-			prix = pprix;
+			prix = pPrix;
 		
 		}
 	//**********************************************************************************************
@@ -38,28 +38,28 @@ public abstract class Moteur implements Serializable {
 	//**********************************************************************************************
 		
 
-	protected TypeMoteur getType() {
+	public TypeMoteur getTypeMoteur() {
 		return type;
 	}
 
-	protected void setType(TypeMoteur type) {
-		this.type = type;
+	public void setTypeMoteur(TypeMoteur pType) {
+		this.type = pType;
 	}
 
-	protected String getCylindre() {
+	public String getCylindre() {
 		return cylindre;
 	}
 
-	protected void setCylindre(String cylindre) {
-		this.cylindre = cylindre;
+	public void setCylindre(String pCylindre) {
+		this.cylindre = pCylindre;
 	}
 	
 	public double getPrix() {
 		return prix;
 	}
 
-	protected void setPrix(double prix) {
-		this.prix = prix;
+	public void setPrix(double pPrix) {
+		this.prix = pPrix;
 	}
 	//*********************************************************************************************
 	
@@ -67,7 +67,7 @@ public abstract class Moteur implements Serializable {
 	
 	//*********************************************************************************************
 	public String toString() {
-		return this.getType() + " " + this.getCylindre() + " " + this.getPrix() + "€" ;
+		return this.getTypeMoteur() + " " + this.getCylindre() + " " + this.getPrix() + "€" ;
 		
 	}
 	

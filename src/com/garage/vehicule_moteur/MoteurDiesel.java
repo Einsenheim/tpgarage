@@ -7,8 +7,10 @@ public class MoteurDiesel extends Moteur{
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public MoteurDiesel(String string, double d) {
-		// TODO Auto-generated constructor stub
+	public MoteurDiesel(String pCylindre, double pPrix) {
+		super(pCylindre, pPrix);
+		this.setTypeMoteur(TypeMoteur.DIESEL);
+		
 	}
 
 }

@@ -1,8 +1,16 @@
 package com.garage.vehicule;
 
 public enum Marque {
-	RENO,
-	PIGEOT,
-	TROEN;
+	RENO("RENO"),
+	PIGEOT("PIGEOT"),
+	TROEN("TROEN");
+	
+	String choixMarque = "RENO";
+	
+	 Marque (String pMarque) {
+	
+	}
+	 
+
 
 }

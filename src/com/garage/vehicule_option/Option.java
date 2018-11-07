@@ -1,9 +1,12 @@
 package com.garage.vehicule_option;
 
-public interface Option {
+import java.io.Serializable;
 
-	double getPrix();
-	
-	
+public interface Option extends Serializable {
 
-}
+	public double prix();
+	
+		public String toString();
+	}
+
+

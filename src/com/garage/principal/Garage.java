@@ -23,7 +23,7 @@ public class Garage implements Serializable {
 	protected List<Vehicule> voiture = new ArrayList<Vehicule>();
 
 	
-	protected void addVoiture(Vehicule voit) {
+	public void addVoiture(Vehicule voit) {
 		
 		//add a new car
 		voiture.add(voit);
@@ -36,8 +36,8 @@ public class Garage implements Serializable {
 		try {
 			oos = new ObjectOutputStream(
 					new BufferedOutputStream(
-							new FileOutputStream(
-									new File("save_garage.txt"))));
+						new FileOutputStream(
+							new File("save_garage.txt"))));
 			
 		//We will write every object inside the file
 			oos.writeObject(voit);
@@ -48,8 +48,8 @@ public class Garage implements Serializable {
 		//Taking data
 			ois = new ObjectInputStream(
 					new BufferedInputStream(
-							new FileInputStream(
-									new File("save_garage.txt"))));
+						new FileInputStream(
+							new File("save_garage.txt"))));
 		try {
 			System.out.println(((Vehicule)ois.readObject()).toString());
 		}catch (ClassNotFoundException e) {
@@ -80,5 +80,3 @@ public class Garage implements Serializable {
 			
 
 	}
-
-

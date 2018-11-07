@@ -9,10 +9,13 @@ public class VitreElectrique implements Option, Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public double prix() {
+		return 212.35;
+	}
+	
 	@Override
-	public double getPrix() {
-		// TODO Auto-generated method stub
-		return 0;
+	public String toString() {
+		return "Vitre Electrique " + this.prix() + "€";
 	}
 
 }

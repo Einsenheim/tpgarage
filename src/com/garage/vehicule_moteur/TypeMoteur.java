@@ -1,10 +1,14 @@
 package com.garage.vehicule_moteur;
 
 public enum TypeMoteur {
-	ESSENCE,
-	HYBRIDE,
-	ELECTRIQUE,
-	DIESEL;
+	ESSENCE("Diesel"),
+	HYBRIDE("Hybride"),
+	ELECTRIQUE("Electrique"),
+	DIESEL("Diesel");
+	
+	TypeMoteur(String type){
+		
+	};
 	
 
 }

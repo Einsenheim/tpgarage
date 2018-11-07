@@ -3,7 +3,6 @@ package com.garage.vehicule;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.garage.vehicule_moteur.Moteur;
 import com.garage.vehicule_moteur.MoteurDiesel;
 import com.garage.vehicule_moteur.MoteurElectrique;
@@ -21,32 +20,33 @@ public class Vehicule implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	//**********************************************************************************************
-	protected double prix;
-	protected String nom;
-	List<Option> options;
-	Marque nomMarque;
-	protected Moteur moteur;
+	private double prix;
+	private String nom;
+	private List<Option> options = new ArrayList<Option>();
+	private Marque nomMarque ;
+	protected static Moteur moteur;
 	//*********************************************************************************************
 	
 	//Default Constructor
 	
 	//*********************************************************************************************
 	public Vehicule() {
-		prix = 0;
-		nom = "";
-		options = new ArrayList<Option>();
-		nomMarque = null;
+		this.prix = 0.0d;
+		this.nom = "Inconu";
+		this.options = new ArrayList<>(options);
+		this.nomMarque = null;
 	}
 	//**********************************************************************************************
 	
 	//constructor with parameter
 	
 	//*********************************************************************************************
-	public Vehicule(double pprix, String pnom, Marque pnomMarque, List<Option> pOptions) {
-		prix = pprix;
-		nom = pnom;
-		options = pOptions;
-		nomMarque = pnomMarque;
+	public Vehicule(double pprix, String pnom, Marque pnomMarque, List<Option> pOptions, Moteur pMoteur) {
+		this.prix = pprix;
+		this.nom = pnom;
+		this.options = pOptions;
+		this.nomMarque = pnomMarque;
+		this.moteur = pMoteur;
 	}
 	//**********************************************************************************************
 
@@ -66,52 +66,53 @@ public class Vehicule implements Serializable {
 		return prix;
 	}
 
-	protected void setPrix(double prix) {
-		this.prix = prix;
+	public void setPrix(double pprix) {
+		this.prix = pprix;
 	}
 
 	protected String getNom() {
 		return nom;
 	}
 
-	protected void setNom(String nom) {
-		this.nom = nom;
+	public void setNom(String pnom) {
+		this.nom = pnom;
 	}
 
 	protected List<Option> getOptions() {
 		return options;
 	}
 
-	protected void setOptions(List<Option> options) {
-		this.options = options;
+	public void setOptions(List<Option> poptions) {
+		this.options = poptions;
 	}
 
-	protected Marque getNomMarque() {
+	public Marque getNomMarque() {
 		return nomMarque;
 	}
 
-	protected void setNomMarque(Marque nomMarque) {
-		this.nomMarque = nomMarque;
+	public void setNomMarque(Marque pnomMarque) {
+		this.nomMarque = pnomMarque;
 	}
 	//*********************************************************************************************
 
 	//*********************************************************************************************
 	//All setMoteur
 	//*********************************************************************************************
-	protected void setMoteur(MoteurEssence moteurEssence) {
-		// TODO Auto-generated method stub
+	public void setMoteur(MoteurEssence moteurEssence, Moteur moteur) {
+		this.moteur = moteur;
 		
 	}
-	protected void setMoteur(MoteurElectrique moteurElectrique) {
-		// TODO Auto-generated method stub
+	public void setMoteur(MoteurElectrique moteurElectrique, Moteur moteur) {
+		this.moteur = moteur;
 		
 	}
-	protected void setMoteur(MoteurDiesel moteurDiesel) {
-		// TODO Auto-generated method stub
+	public void setMoteur(MoteurDiesel moteurDiesel, Moteur moteur) {
+		this.moteur = moteur;
 		
 	}
-	protected void setMoteur(MoteurHybride moteurHybride) {
-		// TODO Auto-generated method stub
+	public void setMoteur(MoteurHybride moteurHybride, Moteur moteur) {
+		this.moteur = moteur;
+		
 		
 	}
 	
@@ -124,11 +125,19 @@ public class Vehicule implements Serializable {
 	//*********************************************************************************************
 	//Total Price
 	//*********************************************************************************************
-		protected double getPrixTotal(double prixTotal, int i) {
-			for (i = 0; i< this.getOptions().size(); i++)
-			{prixTotal += this.getOptions().get(i).getPrix();}
+		public double getPrixTotal() {
+			
+			double prixTotal = 0.0d;
+			for (int i = 0; i< this.getOptions().size(); i++)
+			{
+			
+				prixTotal += this.getOptions().get(i).prix();
+			}
+			{
+			
 			this.setPrix(this.moteur.getPrix() + prixTotal);
 			return getPrix();
+			}
 			
 		}
 	//*********************************************************************************************
@@ -137,10 +146,8 @@ public class Vehicule implements Serializable {
 	public String toString() {
 		return "Voiture " +this.getNomMarque()+ " : " +this.getNom()
 				+" Moteur " +this.getMoteur().toString() + this.getOptions()
-				+" Prix total : " + this.getPrixTotal(prix, 0);
+				+" Prix total : " + (this.getPrixTotal()) + "€";
 	}
-	
-
-	
+						
 	
 }
